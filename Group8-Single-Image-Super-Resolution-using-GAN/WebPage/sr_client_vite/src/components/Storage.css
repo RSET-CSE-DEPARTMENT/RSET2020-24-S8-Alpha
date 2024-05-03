@@ -1,0 +1,73 @@
+.image-tile
+{
+    display:flex;
+    /* flex-wrap:; */
+    flex-wrap: wrap;
+    max-width: 70vw;
+    flex-direction: row;
+    /* gap:20px; */
+    /* align-items: space-between; */
+    /* justify-content: space-between; */
+    gap:30px;
+    /* gap:20px;
+    flex-direction: row;
+    width:70vw;
+    height:50vh ; */
+}
+/* .image-layout button
+{
+
+} */
+
+
+.image-wrapper/*button+ image*/
+{
+    display:flex; 
+    flex-direction: column;
+    align-items: center; 
+    margin: "10px";
+}
+.image-wrapper button
+{
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    width:80px;
+    height:30px;
+    /* padding:10px; */
+}
+
+.image-container/*image and delete button*/
+{
+    gap: 10px;
+    width: 300px; 
+    height: 300px; 
+    margin: 10px;
+    /* overflow: hidden; */
+    /* position: relative; */
+    position: relative;
+    display: inline-block;
+}
+.image-container img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the entire container */
+}
+
+.delete-button {
+    position: absolute;
+    top: 5px; 
+    left:265px;
+    /* right: 20px;  */
+    visibility: hidden;
+    background: url('delete.png') no-repeat; 
+    background-size: contain;
+    width: 20px; 
+    height: 20px; 
+    cursor: pointer;
+}
+
+.image-container:hover .delete-button {
+    visibility: visible; 
+}

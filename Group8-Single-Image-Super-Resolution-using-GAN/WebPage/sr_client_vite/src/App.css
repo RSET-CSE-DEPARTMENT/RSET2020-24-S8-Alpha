@@ -1,0 +1,62 @@
+/*
+.App{
+  /* display: flex; */
+  /*
+  flex-direction: column;
+  justify-content: center;  
+  align-items: center;
+  background-size: cover;
+  min-height: 97vh;
+  min-width: 95vw; */
+  /* background-repeat: no-repeat;
+  background-position: center; */
+  /* margin:50px;
+  padding:10px; 
+}
+*/
+input{
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border: none;
+  border-radius: 30px;
+}
+
+button{
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Target the file input's button */
+input[type="file"]::-webkit-file-upload-button {
+  /* Add your styles here */
+  /* background-color: white; */
+  /* color:#7439db; */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Firefox */
+input[type="file"]::-moz-file-upload-button {
+  /* Add your styles here */
+  /* background-color: white;
+  color:#7439db; */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* IE 10+ */
+input[type="file"]::-ms-browse {
+  /* Add your styles here */
+  /* background-color: white;
+  color:#7439db; */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
