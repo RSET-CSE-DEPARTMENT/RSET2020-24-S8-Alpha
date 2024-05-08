@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Emosense",
+  "version": "1.0",
+  "description": "Demonstrates basic extension functionality.",
+  "host_permissions": [
+    "https://www.google.com/",
+    "https://www.linkedin.com/",
+    "https://www.instagram.com/",
+    "https://www.twitter.com/",
+    "https://www.facebook.com/",
+    "https://web.whatsapp.com/",
+    "https://web.telegram.org/",
+     "https://www.reddit.com/"
+  ],
+  "permissions": ["storage", "activeTab","scripting"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [{
+    "matches": ["https://www.linkedin.com/*","https://www.instagram.com/*",
+    "https://www.facebook.com/*","https://web.telegram.org/","https://www.reddit.com/*","https://www.whatsapp.com/*"],
+    "js": ["content.js"],
+    "run_at": "document_end"
+  },
+{
+  "matches": ["https://www.google.com/*"],
+  "js": ["content2.js"]
+},
+{
+  "matches":["<all_urls>"],
+  "js":["summarize.js"]
+}
+  ],
+
+  "action": {
+    "default_title": "Show Extracted Text",
+    "default_popup": "popup.html"
+  }
+}
