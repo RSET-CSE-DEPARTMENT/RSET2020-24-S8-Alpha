@@ -1,0 +1,138 @@
+.register
+{
+    /* margin:5%; */
+    /* margin: 7%; */
+    margin-top: 5%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+
+}
+
+.form-container
+{
+    display:flex;
+    /* background-color:grey; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    /* max-width: 400px; */
+    /* margin: 0 auto; */
+    /* margin: 5%; */
+    /* padding: 100px; */
+    /* min-height:50vh; */
+    min-height: 80vh;
+    min-width: 35vw;
+    /* gap:10px; */
+    /* background-color: #ffffff; */
+    border-radius: 10px;
+    /* border: 10px;
+    color:white; */
+    background: linear-gradient(to top, rgb(0,0,0,0.8)50%, rgb(0,0,0,0.8)50%);
+    /* border: 1px solid white; */
+    /* margin:10px; */
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); Add box shadow for a better visual effect */
+}
+
+.input-field{
+    /* width: 240px;
+    height: 35px;
+    background: transparent;
+    border-bottom: 1px solid #ff7200;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    color: white;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-top: 30px;
+    font-family: sans-serif; */
+    display:flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-direction: row;
+    /* gap:30px; */
+    /* flex-wrap: wrap; */
+    /* max-width: 100px; */
+    align-items: center;
+    /* justify-content: space-around; */
+    gap: 20px;
+    /* justify-content: center; */
+
+    
+}
+.input-field input
+{
+    background: transparent;
+    border-bottom: 1px solid #ff7200;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    letter-spacing: 1px;
+    width:180px;
+    /* margin-top: 30px; */
+    font-family: sans-serif;
+}
+
+/* .input-field
+{
+    display:flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+} */
+
+.input-field label {
+    max-width: 140px; /* Example maximum width for label */
+    word-wrap: break-word; /* Allow the label text to wrap if it exceeds the maximum width */
+}
+
+.register-btn
+{
+    background: #ff7200;
+    border: none;
+    /* padding: 10px 20px; */
+    font-size: 18px;
+    /* padding: 0 0; */
+    width: 160px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.login-link {
+    color: #4285F4; /* Light blue color */
+    text-decoration: none; /* Removes default underline */
+}
+
+.login-link:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+/* .right-label
+{
+
+} */
+.notify
+{
+    background-color: rgba(0, 0, 0, 0.5); 
+    backdrop-filter: blur(10px); 
+    border-radius: 0px;
+    /* margin:20px; */
+    /* padding:5px; */
+}
+.notification.error
+{
+    color:red;
+}
+
+.notification.success
+{
+    color:green;
+}

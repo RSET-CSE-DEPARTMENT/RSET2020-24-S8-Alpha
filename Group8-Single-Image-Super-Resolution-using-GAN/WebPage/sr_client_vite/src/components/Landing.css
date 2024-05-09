@@ -1,0 +1,134 @@
+.Landing
+{
+    /* display:flex;
+    flex-direction: column;
+    justify-content: space-around; */
+    display:flex;
+    /* margin: 50px; */
+    /* align-items: center; */
+    flex-direction: row;
+    /* margin:5%; */
+    margin-top: 10%;
+    justify-content: center;
+    /* align-items: center; */
+    gap:170px;
+}
+
+.links
+{
+    display:flex;
+    flex-direction: column;
+}
+
+
+.formbox-container
+{
+    display: flex;
+    /* background-color: wheat;
+    color: black; */
+    flex-direction: column;
+    /* justify-content: space-around; */
+    gap:10px;
+    align-items: center;
+    width: 250px;
+    height: 380px;
+    /* max-width: 400px; */
+    /* padding: 100px; */
+    border-radius: 10px;
+    /* border: 1px solid white; */
+    background: linear-gradient(to top, rgb(0,0,0,0.8)50%, rgb(0,0,0,0.8)50%);
+
+}
+
+.formbox-container input
+{
+    /* width: 240px;
+    height: 35px; */
+    background: transparent;
+    border-bottom: 1px solid #ff7200;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    letter-spacing: 1px;
+    width:75%;
+    /* margin-top: 30px; */
+    font-family: sans-serif;
+}
+
+.carousel-container
+{
+    display:flex;
+    flex-direction: column;
+    border-radius: 10px;
+    /* gap:30px; */
+    justify-content: space-evenly;
+    /* border: 1px solid white; */
+    /* padding: 50px; */
+}
+.carousel-container h1
+{
+    font-family: 'Times New Roman';
+    font-size: 50px;
+    letter-spacing: 2px;
+    margin: 0;
+}
+.carousel-container span
+{
+    color: #ff7200;
+    font-size: 60px;
+}
+.carousel-container p
+{
+    letter-spacing: 1.2 px; 
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.join-link
+{
+    display: inline-block;
+    width:160px;
+}
+.join-btn
+{
+    background: #ff7200;
+    border: none;
+    /* padding: 10px 20px; */
+    font-size: 18px;
+    /* padding: 0 0; */
+    width: 160px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.login-btn
+{
+    background: #ff7200;
+    border: none;
+    /* padding: 10px 20px; */
+    width:50%;
+    min-width: 70px;
+    border-radius: 10px;
+    cursor: pointer;  
+    font-size: 16px;
+}
+
+/* button{
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+} */
+
+.error-message
+{
+    background-color: rgba(0, 0, 0, 0.5); 
+    backdrop-filter: blur(10px); 
+    border-radius: 0px;
+    color:red;
+}
+
