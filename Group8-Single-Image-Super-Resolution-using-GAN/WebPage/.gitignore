@@ -1,4 +1,0 @@
-__pycache__
-*.db
-flask_session
-test_models
