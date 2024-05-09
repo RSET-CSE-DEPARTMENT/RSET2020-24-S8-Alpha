@@ -1,0 +1,7 @@
+Flask==2.3.3
+gensim
+keras
+nltk
+numpy
+stop-words
+flask-cors
