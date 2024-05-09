@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Output</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #007bff;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .video-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .keyword-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .keyword {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign Language:</h2>
+        <div class="video-container">
+            <video class="video-item" id="mainVideo" controls autoplay>
+                {% for token in tokens_sign_lan %}
+                    <source src="{{ url_for('static', filename=token) }}" type="video/mp4">
+                {% endfor %}
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="keyword-container">
+            {% for token in tokens_sign_lan %}
+                <span class="keyword">{{ token.split('.')[0] }}</span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        const mainVideo = document.getElementById('mainVideo');
+        const sources = mainVideo.getElementsByTagName('source');
+        let currentSourceIndex = 0;
+
+        function playNextVideo() {
+            if (currentSourceIndex < sources.length - 1) {
+                currentSourceIndex++;
+                mainVideo.src = sources[currentSourceIndex].src;
+                mainVideo.play();
+            }
+        }
+
+        mainVideo.addEventListener('ended', playNextVideo);
+    </script>
+</body>
+</html>
