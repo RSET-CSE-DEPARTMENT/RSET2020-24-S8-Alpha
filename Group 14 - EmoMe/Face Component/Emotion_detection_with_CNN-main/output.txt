@@ -1,0 +1,12 @@
+Last Predicted Emotion: happy
+angry: 0.0676
+calm: 0.09
+disgust: 0.0
+fear: 0.2752
+happy: 0.4982
+neutral: 0.4868
+sad: 0.0498
+surprise: 0.1742
+
+
+

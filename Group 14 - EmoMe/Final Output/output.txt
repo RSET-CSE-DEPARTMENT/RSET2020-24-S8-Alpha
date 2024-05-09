@@ -1,0 +1,10 @@
+Mean Emotion Scores: [0.0281 (Angry) 0.0000 (Disgusted) 0.3237 (Fearful) 0.3529 (Happy) 0.2854 (Neutral) 0.0000 (Sad) 0.0098 (Surprised)]
+Standard Deviation of Emotion Scores: [0.1593 (Angry) 0.0000 (Disgusted) 0.4677 (Fearful) 0.4779 (Happy) 0.4493 (Neutral) 0.0000 (Sad) 0.0985 (Surprised)]
+Most Detected Emotion: Happy
+Frames Recognized (Angry): 3
+Frames Recognized (Disgusted): 0
+Frames Recognized (Fearful): 33
+Frames Recognized (Happy): 36
+Frames Recognized (Neutral): 29
+Frames Recognized (Sad): 0
+Frames Recognized (Surprised): 1
