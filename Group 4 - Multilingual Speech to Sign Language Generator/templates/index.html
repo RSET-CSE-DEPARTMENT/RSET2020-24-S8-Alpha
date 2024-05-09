@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech To Sign</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .listening-gesture {
+            width: 100px;
+            height: 100px;
+            margin: 20px auto;
+            display: none;
+        }
+
+        .listening-gesture svg {
+            width: 100%;
+            height: 100%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.8);
+            }
+            50% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(0.8);
+            }
+        }
+    </style>
+    <script>
+        
+        function showListeningGesture() {
+            var inputType = document.getElementById("input_type").value;
+            var listeningGesture = document.getElementById("listeningGesture");
+            if (inputType === "speech") {
+                listeningGesture.style.display = "block";
+            } else {
+                listeningGesture.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Speech to Sign</h1>
+        <form action="/process_input" method="post" onsubmit="showListeningGesture()">
+            <label for="input_type">Select input type:</label>
+            <select name="input_type" id="input_type">
+                <option value="text">Text</option>
+                <option value="speech">Speech</option>
+            </select><br><br>
+            <div class="listening-gesture" id="listeningGesture">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" fill="#007bff" />
+                    <path fill="#fff" d="M12 6l2.121 2.121L12 10.242l-2.121-2.121zm4.243 1.414l2.121 2.121-2.121 2.121-2.121-2.121zm-8.486 0l-2.121 2.121L7.879 10.242 10 8.121zm0 8.486l-2.121-2.121L10 13.879l2.121 2.121zm4.243 2.121l2.121-2.121 2.121 2.121-2.121 2.121zM6.707 10.242l-2.121 2.121L4.586 12l2.121-2.121zm10.607 7.071l-2.121-2.121 2.121-2.121 2.121 2.121z" />
+                </svg>
+            </div>
+            <textarea name="text_input" id="text_input" rows="4" cols="50" placeholder="Enter text....."></textarea><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
