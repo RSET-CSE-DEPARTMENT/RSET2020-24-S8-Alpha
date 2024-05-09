@@ -1,0 +1,5 @@
+is_global = true
+build_property.RootNamespace = HarmfulContentDetection.Web
+build_property.ProjectDir = C:\Users\ANKIT\DeepCens\HarmfulContentDetectionWeb\HarmfulContentDetection.Web.Mvc\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
