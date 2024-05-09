@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(white,black); /* Background color for the website */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .page {
+            background-color: #ffffff; /* Background color for the page */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 730px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-top: 30px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h1>Mental Health Report</h1>
+        <p>This report is based on an analysis of your recent social media posts.</p>
+        <h2>Overall Emotional Tone: {{dominant_emotion}} ({{dominant_score}})</h2>
+        <p><b>{{dominant_emotion}}</b>: This is the most prominent emotion detected in your posts.</p>
+        <h2>Emotional Breakdown</h2>
+        <ul>
+            <li><b>Joy</b>: A score of {{joy_score}} indicates a {{joy_presence}} presence of joy in your posts.</li>
+            <li><b>Sadness</b>: A score of {{sadness_score}} indicates a {{sadness_presence}} presence of sadness in your posts.</li>
+            <li><b>Anger</b>: A score of {{anger_score}} indicates a {{anger_presence}} presence of anger in your posts.</li>
+            <li><b>Fear</b>: A score of {{fear_score}} indicates a {{fear_presence}} presence of fear in your posts.</li>
+            <li><b>Neutral</b>: A score of {{neutral_score}} indicates a {{neutral_presence}} presence of neutral sentiment in your posts.</li>
+        </ul>
+
+    </div>
+</body>
+</html>

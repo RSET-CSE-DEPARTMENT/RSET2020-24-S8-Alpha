@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Report Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(
+        to right,
+        #ffcc00,
+        #ffffff
+      ); /* Yellow and White Gradient Background */
+      font-family: Arial, sans-serif;
+      color: #333;
+      text-align: center;
+    }
+
+    .header {
+      background: #333;
+      color: #fff;
+      padding: 10px;
+    }
+
+    .report-text {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+
+    #submit-button {
+      background: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      text-decoration: none;
+      display: block; /* Change display to block */
+      font-size: 16px;
+      margin: 20px auto 0; /* Add margin-top and margin-bottom */
+      cursor: pointer;
+    }
+
+    /* Style for the textarea */
+    #text-input {
+      width: 80%;
+      height: 200px; /* Adjust height as needed */
+      margin: 20px auto;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: none; /* Prevent resizing */
+    }
+
+    /* Style for the summarized text area */
+    #summarized-text {
+      width: 80%;
+      height: 200px; /* Adjust height as needed */
+      margin: 20px auto;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: none; /* Prevent resizing */
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Text Summarization</h1>
+  </div>
+
+  <div class="report-text">Paste your text to be Summarized</div>
+  
+  <form id="summarize" action="/summarize" method="post">
+    <!-- Textarea for user input -->
+    <!-- Textarea for user input -->
+<textarea id="text-input" name="textsum" placeholder="Paste or type your text here">{{originalText}}</textarea>
+
+
+    <button id="submit-button" type="submit">Summarizer</button>
+  </form>
+
+  <!-- Div to display the summarized text -->
+  {{#if finalSummarizedText}}
+    <textarea id="summarized-text">{{finalSummarizedText}}</textarea>
+  {{/if}}
+
+
+
+</body>
+</html>
