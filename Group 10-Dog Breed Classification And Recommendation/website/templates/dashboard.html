@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="static/main.css" rel="stylesheet" type="text/css" media="all">
+	<link rel="stylesheet" type="text/css" href="static/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="static/welcome.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<title></title>
+</head>
+<body onload="insertList();">
+	<nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">CanineMate</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a onclick="FindMatch();"><span class="glyphicon glyphicon-user" hidden></span> My Matches</a></li>
+          <li><a href="/login"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div style="width: 100%; margin-top: -20px;" id="wrapper">
+    	<!-- <div style="float: left; width: 50%;" id="first"> -->
+    		<!-- Displaying the list of opposite genders -->	
+    	<!-- </div>  -->
+
+    	<div class="inbox_people" id="leftparent">
+          <div class="headind_srch" style="background-color: #1b700e; height: 50px;">
+            <div class="recent_heading">
+              <h4 style="color: white; vertical-align: middle;"> <b>CanineMate</b> </h4>
+            </div>
+          </div>
+        </div>
+
+    	<div style="float: right; width: 50%;" id="second">
+    		<img src="" id="img">
+	    	<h2 id="dynamic-description"></h2>
+	    	<h2><span id="remove"></span></h2>
+	    	<h2><span id="like" onclick="SubmitForm();"></span></h2>
+    		<form action="/OneSided" method="post" id="oneside">
+	    		<input name = "current-username" id="curr-user" value="{{ currentlogin }}" hidden/><br>
+	    		<input name = "liked-person" id="liked" hidden/><br>
+	    		<input name = "pagedata" id="displaydata" value="{{ users }}" hidden/><br>
+    		</form>
+    		<form action="/showMatch" method="post" id="match">
+				<input name="liker" value="{{ currentlogin }}" hidden/>	
+    		</form>
+    	</div>
+    </div>
+    
+    <script type="text/javascript">
+
+    	x = [];
+		x = {{ users | tojson | safe }};
+
+		//document.getElementById('curr-user').value = {{ currentlogin }};
+		//document.getElementById('displaydata').value = x;
+
+		var image = document.getElementById('img'); 
+		var descrpt = document.getElementById('dynamic-description');
+
+		var glyphicon1 = document.getElementById('remove');
+		var glyphicon2 = document.getElementById('like');
+    	var imageIndex = 0;
+    	var obj;
+    	
+
+    	var rows = x.length;
+    	console.log("-----------------");
+    	console.log(rows);
+    	console.log(typeof x);
+    	console.log(x);
+    	var martop = 20;
+    	
+    	var parentdiv = document.getElementById('leftparent');
+
+    	function insertList()
+    	{
+    		for(var i=0;i<rows;i++)
+    		{
+    			var div1 = document.createElement('div');
+    			var div2 = document.createElement('div');
+    			var div3 = document.createElement('div');
+    			var div4 = document.createElement('div');
+    			var div5 = document.createElement('div');
+    			var img = document.createElement('img');
+    			var name = document.createElement('h5');
+    			var desc = document.createElement('p');
+
+				div1.setAttribute("class","inbox_chat");
+
+				div2.setAttribute("class","chat_list");
+
+				div3.setAttribute("class","chat_people");
+
+				div4.setAttribute("class","chat_img");
+
+				div5.setAttribute("class","chat_ib");
+
+				img.setAttribute("src",x[i][4]);
+				img.setAttribute("id",i);
+				img.setAttribute("style","max-width: 100px; border-radius: 50%;")
+				img.setAttribute("onclick","insertImage(id)");
+
+				name.innerHTML = x[i][1];
+
+				desc.innerHTML = x[i][7];
+
+				div5.appendChild(name);
+				div5.appendChild(desc);
+
+				div4.appendChild(img);
+
+				div3.appendChild(div4);
+				div3.appendChild(div5);
+
+				div2.appendChild(div3);
+
+				div1.appendChild(div2); 
+
+				parentdiv.appendChild(div1);   			
+
+    		}
+    	}
+
+
+    	function insertImage(id)
+    	{
+    		var mydiv = document.getElementById('second');
+    		var heart = document.getElementById('heart');
+    		var imageIndex = id;
+    		next = (id+1)%rows;
+
+    		image.setAttribute("src",x[id][4]);
+    		image.setAttribute("class","imagedecor");
+
+    		descrpt.innerHTML = x[id][7].toString();
+    		descrpt.setAttribute("style","float: ");
+
+    		glyphicon1.setAttribute("class","glyphicon glyphicon-remove");
+    		glyphicon1.setAttribute("style","float: left;")
+    		glyphicon1.setAttribute("onclick","insertImage(next)");
+
+    		glyphicon2.setAttribute("class","glyphicon glyphicon-heart");
+    		glyphicon2.setAttribute("style","margin-left: 60%;");
+
+    		document.getElementById('liked').value = x[id][1];
+
+		}
+
+		function SubmitForm()
+		{
+			document.getElementById("oneside").submit();
+		}
+
+		function FindMatch()
+		{
+			document.getElementById("match").submit();
+		}
+
+    </script>
+</body>
+</html>
