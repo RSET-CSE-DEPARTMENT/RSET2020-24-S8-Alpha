@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html> 
+<html lang="en" >
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins"> 
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/fontAwesome.css' %}">
+        <link rel="stylesheet" href="{% static 'css/hero-slider.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl-carousel.css' %}">
+        <link rel="stylesheet" href="{% static 'css/templatemo-style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+
+        <!-- <link rel="stylesheet" href="{% static 'vendors/ti-icons/css/themify-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/base/vendor.bundle.base.css' %}"> -->
+        <!-- endinject -->
+        <!-- plugin css for this page -->
+        <!-- End plugin css for this page -->
+        <!-- inject:css -->
+        <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        
+        <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" /> -->
+
+        <title>Home</title>
+        
+    </head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <body>
+        <div class="header">
+            <div class="container">
+                <nav class="navbar navbar-inverse" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                    </div>
+           
+                    <div id="main-nav" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="{% url 'home_page' %}"  data-id="home">Home</a></li>        
+                            <li><a href="{% url 'logout' %}"  data-id="logout">Logout</a></li>
+                      
+                        </ul>
+                    </div>
+                  
+                </nav>
+            
+            </div>
+    
+        </div>
+        <div class="parallax-content baner-content" id="home">
+            <div class="container">
+                <div class="text-content">
+                    
+                    <iframe src="{% static 'charts/ADANIENT.html' %}" width="100%" height="600px" frameborder="0"></iframe>
+                    <iframe src="{% static 'charts/BAJFINANCE.html' %}" width="100%" height="600px" frameborder="0"></iframe>
+                    <iframe src="{% static 'charts/BHARTIARTL.html' %}" width="100%" height="600px" frameborder="0"></iframe>
+                    <iframe src="{% static 'charts/HCLTECH.html' %}" width="100%" height="600px" frameborder="0"></iframe>
+                    <iframe src="{% static 'charts/HDFCBANK.html' %}" width="100%" height="600px" frameborder="0"></iframe>
+                    <iframe src="{% static 'charts/ICICIBANK.html' %}" width="100%" height="600px" frameborder="0"></iframe>
+                    <iframe src="{% static 'charts/INFY.html' %}" width="100%" height="600px" frameborder="0"></iframe>
+                    <iframe src="{% static 'charts/ITC.html' %}" width="100%" height="600px" frameborder="0"></iframe>
+                    <iframe src="{% static 'charts/KOTAKBANK.html' %}" width="100%" height="600px" frameborder="0"></iframe>
+                    <iframe src="{% static 'charts/LICI.html' %}" width="100%" height="600px" frameborder="0"></iframe>
+                    <iframe src="{% static 'charts/LT.html' %}" width="100%" height="600px" frameborder="0"></iframe>
+                    <iframe src="{% static 'charts/MARUTI.html' %}" width="100%" height="600px" frameborder="0"></iframe>
+                    <iframe src="{% static 'charts/RELIANCE.html' %}" width="100%" height="600px" frameborder="0"></iframe>
+                    <iframe src="{% static 'charts/SBIN.html' %}" width="100%" height="600px" frameborder="0"></iframe>
+                    <iframe src="{% static 'charts/SUNPHARMA.html' %}" width="100%" height="600px" frameborder="0"></iframe>
+                    <iframe src="{% static 'charts/TATAMOTORS.html' %}" width="100%" height="600px" frameborder="0"></iframe>
+                    <iframe src="{% static 'charts/TCS.html' %}" width="100%" height="600px" frameborder="0"></iframe>
+                    <iframe src="{% static 'charts/TITAN.html' %}" width="100%" height="600px" frameborder="0"></iframe>
+                    <iframe src="{% static 'charts/WIPRO.html' %}" width="100%" height="600px" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+           
+    </body>
+    <script>
+          $(document).ready(function () {
+      $('#analyse').click(function() {
+          window.location.href='/analyze_page/'
+      });
+
+      $('#chat').click(function() {
+          window.location.href='/chat_page/'
+      });
+      var start = $('#sd').val();
+      var end = $('#ed').val();
+
+      $.ajax({
+        url: '/predict_analysis/',
+        dataType: json,
+        data: {
+            'start': start,
+            'end': end,
+        },
+        success: function(data) {
+
+        },
+      })
+  });
+    </script>
+</html>

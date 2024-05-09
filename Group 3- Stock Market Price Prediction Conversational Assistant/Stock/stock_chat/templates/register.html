@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="{% static 'css/ss.css' %}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!doctype html>
+
+<html lang="en"> 
+
+ <head> 
+
+  <meta charset="UTF-8"> 
+
+  <link rel="stylesheet" href="{% static 'ss.css' %}"> 
+
+ </head> 
+ <script>
+  $(document).ready(function(){
+      $('.home').click(function(){
+          window.location.assign("{% url 'home_page'%}")
+      })
+  })
+</script>
+ <body> <!-- partial:index.partial.html --> 
+
+  <section> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> 
+
+   <div class="signin"> 
+
+    <div class="content"> 
+
+     <h2>Register</h2> 
+
+     <div class="form"> 
+      <form method="POST" action="{% url 'register' %}">{% csrf_token %}
+
+      <div class="inputBox"> 
+        <input type="text"  name="name" required> <i>Name</i> 
+      </div> 
+      <br>
+
+      <div class="inputBox"> 
+        <input type="text"  name="email" required> <i>Email</i> 
+      </div> 
+      <br>
+
+      <div class="inputBox"> 
+        <input type="password" name="password" pattern=".{8,}" title="Password must be at least 8 characters long" required> <i>Password</i>  
+       </div> 
+       <br>
+
+      <div class="inputBox"> 
+       <input type="password" name="conf" pattern=".{8,}" title="Password must be at least 8 characters long" required> <i>Confirm Password</i> 
+      </div> 
+      <br>
+
+      <div class="inputBox"> 
+        <input type="text" name="contact" pattern="[0-9]{10}" title="Contact number must be 10 digits" required> <i>Contact Number</i> 
+       </div> 
+       <br>
+ 
+
+      <div class="inputBox"> 
+
+       <input type="submit" value="SIGN UP"> 
+
+      </div> 
+    </form>
+    <div>
+        <a href="{% url 'login_page' %}">Already Signed Up?</a>
+     </div>
+
+     </div> 
+
+    </div> 
+
+   </div> 
+
+  </section> <!-- partial --> 
+
+ </body>
+
+</html>
+<!-- partial -->
+  
+</body>
+<script>
+  $(document).ready(function () {
+      $('.toggle-password').click(function() {
+          var passwordField = $($(this).attr("toggle"));
+          if (passwordField.attr("type") === "password") {
+              passwordField.attr("type", "text");
+              $(this).text("Hide");
+          } else {
+              passwordField.attr("type", "password");
+              $(this).text("Show");
+          }
+      });
+  });
+</script>
+</html>

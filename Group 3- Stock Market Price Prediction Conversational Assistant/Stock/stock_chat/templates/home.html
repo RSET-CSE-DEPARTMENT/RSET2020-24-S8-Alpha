@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html> 
+<html lang="en" >
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/fontAwesome.css' %}">
+        <link rel="stylesheet" href="{% static 'css/hero-slider.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl-carousel.css' %}">
+        <link rel="stylesheet" href="{% static 'css/templatemo-style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+
+        <title>Home</title>
+        
+    </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <body>
+        <div class="header">
+            <div class="container">
+                <nav class="navbar navbar-inverse" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                    </div>
+           
+                    <div id="main-nav" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                                             
+                            <li><a href="{% url 'logout' %}"  data-id="logout">Logout</a></li>
+                      
+                        </ul>
+                    </div>
+             
+                </nav>
+            
+            </div>
+    
+        </div>
+            <div class="parallax-content baner-content" id="home">
+        <div class="container">
+            <div class="text-content">
+                <!-- <h2><em>Welcome</em> <span>{{ user }}</span></h2> -->
+                <h2><em>Welcome to </em> <span> Stock Conversational Chatbot</span></h2>
+
+                <button type="submit" id="analyse" style="width: 120px; height: 40px; background-color: #4CAF50; color: white; font-size: 16px;">Analysis</button>
+                <button type="submit" id="chat" style="width: 120px; height: 40px; background-color: #4CAF50; color: white; font-size: 16px;">Chat</button>
+                
+
+            </div>
+        </div>
+    </div>
+    </body>
+    <script>
+          $(document).ready(function () {
+      $('#analyse').click(function() {
+          window.location.href='/analyze_page/'
+      });
+
+      $('#chat').click(function() {
+          window.location.href='/chat_page/'
+      });
+  });
+    </script>
+</html>

@@ -1,0 +1,431 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat StockSensei</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <style>
+        /* Add this style for the attachment icon */
+        .attachment-icon {
+            cursor: pointer;
+            padding: 12px;
+            box-sizing: border-box;
+            color: #007bff;
+            font-size: 16px;
+        }
+    </style>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        
+        .button-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            }
+
+            .button-link:hover {
+            background-color: #0056b3;
+            }
+
+
+        .paper-plane-btn {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .paper-plane-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .chat-container {
+            display: flex;
+            height: 100vh;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-bar {
+            display: flex;
+            flex-direction: column;
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px;
+            align-items: flex-start;
+            width: 120px;
+        }
+
+        .nav-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            padding: 10px;
+        }
+
+        .nav-option img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .nav-option.active {
+            border-color: #007bff;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background-color: #3498db;
+            /* Choose your preferred color */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 36px;
+            font-family: 'Cursive', sans-serif;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid #0056b3;
+            position: relative;
+        }
+
+        .chat-header i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .chat-messages {
+            flex: 1;
+            min-height: 200px;
+            max-height: 400px;
+            padding: 10px;
+            overflow-y: scroll;
+            background-color: #fff;
+        }
+
+        .message-container {
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .user-message {
+            text-align: right;
+            color: #333;
+        }
+
+        .user-message .message {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            max-width: 80%;
+        }
+
+        .bot-message {
+            text-align: left;
+            color: #007bff;
+            display: flex;
+            /* Added display flex */
+            align-items: flex-start;
+            /* Align items to the start */
+        }
+
+        .bot-message .bot-icon {
+            width: 30px;
+            /* Adjust the size of the bot icon */
+            height: 30px;
+            /* Adjust the size of the bot icon */
+            border-radius: 50%;
+            margin-right: 10px;
+            /* Adjust the spacing between the icon and the message */
+        }
+
+        .bot-message .message {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            max-width: 80%;
+        }
+
+        .typing-animation::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #007bff;
+            margin-right: 4px;
+            animation: typing 0.7s infinite;
+        }
+
+        @keyframes typing {
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-8px);
+            }
+
+            60% {
+                transform: translateY(-4px);
+            }
+        }
+
+        .input-container {
+            padding: 45px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            /* Center vertically */
+            justify-content: center;
+            /* Center horizontally */
+        }
+
+        /* Modify the styles for the file input */
+        input[type="file"] {
+            display: none;
+        }
+
+        .attachment-icon {
+            cursor: pointer;
+            padding: 12px;
+            box-sizing: border-box;
+            color: #007bff;
+            font-size: 16px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            /* Increased padding */
+            box-sizing: border-box;
+            border: 2px solid #007bff;
+            /* Added border */
+            border-radius: 10px;
+            /* Added border-radius */
+            margin-right: 10px;
+            font-size: 16px;
+            /* Increased font size */
+        }
+
+        .paper-plane-btn {
+            padding: 12px;
+            /* Increased padding */
+            box-sizing: border-box;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 10px;
+            /* Added border-radius */
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            /* Increased font size */
+        }
+
+        .paper-plane-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chat-container">
+        <div class="nav-bar">
+            <div class="nav-option" onclick="switchCategory('Home')">
+                <img src="{% static 'home.png' %}" alt="Home"> Home
+            </div>
+
+        </div>
+        <div class="content">
+            <div class="chat-header">
+                Chat Stock
+                
+            </div>
+            <div class="chat-messages" id="chat-messages"></div>
+            <div class="input-container">
+                <input type="file" id="file-input" style="display: none">
+
+                <input type="text" id="user-input" placeholder="Type your message..." maxlength="100">
+                <button class="paper-plane-btn" onclick="sendMessage()" id="submit-btn" disabled>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var userInputField = document.getElementById('user-input');
+        var submitButton = document.getElementById('submit-btn');
+        var chatMessages = document.getElementById('chat-messages');
+        var category = 'Home'; 
+
+        userInputField.addEventListener('input', function () {
+            // Enable/disable submit button based on trimmed input field content
+            submitButton.disabled = userInputField.value.trim() === '';
+        });
+
+        userInputField.addEventListener('keyup', function () {
+            // Ensure the submit button remains disabled after backspacing
+            submitButton.disabled = userInputField.value.trim() === '';
+        });
+
+        userInputField.addEventListener('keypress', function (event) {
+            // Submit on 'Enter' key press
+            if (event.key === 'Enter' && !submitButton.disabled) {
+                sendMessage();
+            }
+        });
+
+
+        function switchCategory(selectedCategory) {
+            // You can add logic here to handle switching between categories
+            console.log('Switching to category:', selectedCategory);
+
+            // Set the global category variable
+            category = selectedCategory;
+
+            // Clear chat messages
+            chatMessages.innerHTML = '';
+            window.location.href='/home_page/'
+    }
+
+        function sendMessage() {
+            var userInput = userInputField.value.trim();
+
+            if (userInput !== '') {
+                // Append user message to the chat
+                chatMessages.innerHTML += '<div class="message-container user-message">' +
+                    '<div class="message">' + userInput + '</div>' +
+                    '</div>';
+
+                // Include the selected category in the message
+                var message = {
+                    content: userInput,
+                    category: category,
+                    type: 'text',
+                };
+
+                // Send the message to the Django backend
+                sendToBackend(message);
+
+
+                // Clear the input field
+                userInputField.value = '';
+
+                // Scroll to the bottom of the chat messages
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                // Disable the submit button after sending a message
+                submitButton.disabled = true;
+            }
+        }
+
+        function sendToBackend(message) {
+            // Display the typing animation
+            chatMessages.innerHTML += '<div class="message-container bot-message">' +
+                '<div class="bot-icon"></div>' +
+                '<div class="message typing-animation"></div>' +
+                '</div>';
+
+            // Use fetch to send the message to the Django backend
+            fetch('/process_message/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(message),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Remove the typing animation
+                    chatMessages.lastChild.remove();
+                    // Handle the response from the backend (bot response)
+                // Display the bot response in the chat
+                    let messageHTML = '<div class="message-container bot-message">' +
+                            '<div class="bot-icon"></div>' +
+                            '<div class="message">' + data.botResponse + '</div>';
+        // Check if data.ndays is not empty
+        if (data.ndays) {
+            // messageHTML += '<div class="message"> <button type="submit" id="ndays" value="' + data.ndays + '"> Go </button></div>';
+            messageHTML += '<div class="message"> <a class="button-link" href="{% url 'my_view_page' %}">Go</a></div>';
+
+        }
+        messageHTML += '</div>';
+        chatMessages.innerHTML += messageHTML;
+
+                    
+
+                    
+
+                    // Scroll to the bottom of the chat messages
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                })
+                .catch(error => {
+                    console.error('Error sending message to backend:', error);
+                });
+        }
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+                $(document).ready(function () {
+                $('#ndays').click(function() {
+                    console.log('clicked Go')
+                    var ndays = $("#ndays").val();
+                    $.ajax({
+                        url:'/predict_stock/',
+                        dataType:'json',
+                        method:'POST',
+                        data:{
+                            'ndays':ndays,
+                        },
+                        
+                        success: function(data) {
+
+                        }
+                    });
+      });
+
+      
+  });
+    </script>
+</body>
+
+</html>
