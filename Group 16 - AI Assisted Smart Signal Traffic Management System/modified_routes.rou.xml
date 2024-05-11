@@ -1,0 +1,27 @@
+<routes>
+    <vType id="car" accel="2.6" decel="4.5" sigma="0.5" length="5" maxSpeed="30" guiShape="passenger" />
+    <vType id="bus" accel="1.5" decel="3.0" sigma="0.5" length="12" maxSpeed="25" guiShape="bus" />
+    <vType id="bike" accel="1.2" decel="3.0" sigma="0.5" length="2" maxSpeed="15" guiShape="bicycle" />
+    <vType id="truck" accel="1.0" decel="3.0" sigma="0.5" length="15" maxSpeed="20" guiShape="truck" />
+
+    <flow id="0" type="car" from="17to1" to="13to25" begin="0" end="20" period="1" departSpeed="max" departPos="base" departLane="best" />
+    <flow id="1" type="bus" from="18to2" to="14to26" begin="0" end="30" period="1" departSpeed="max" departPos="base" departLane="best" />
+    <flow id="2" type="car" from="19to3" to="15to27" begin="0" end="40" period="1" departSpeed="max" departPos="base" departLane="best" />
+    <flow id="3" type="bike" from="23to12" to="15to31" begin="0" end="5" period="1" departSpeed="max" departPos="base" departLane="best" />
+
+    <flow id="4" type="bus" from="20to0" to="3to28" begin="0" end="10" period="1" departSpeed="max" departPos="base" departLane="best" />
+    <flow id="5" type="bike" from="22to8" to="11to30" begin="0" end="10" period="1" departSpeed="max" departPos="base" departLane="best" />
+    <flow id="6" type="bus" from="22to8" to="11to30" begin="0" end="30" period="1" departSpeed="max" departPos="base" departLane="best" />
+    <flow id="7" type="bike" from="16to0" to="12to24" begin="0" end="20" period="1" departSpeed="max" departPos="base" departLane="best" />
+
+    <flow id="8" type="car" from="21to4" to="7to29" begin="0" end="15" period="1" departSpeed="max" departPos="base" departLane="best" />
+    <flow id="9" type="bus" from="19to3" to="15to27" begin="0" end="20" period="1" departSpeed="max" departPos="base" departLane="best" />
+    <flow id="10" type="bike" from="23to12" to="15to31" begin="0" end="40" period="1" departSpeed="max" departPos="base" departLane="best" />
+    <flow id="11" type="truck" from="20to0" to="3to28" begin="0" end="15" period="1" departSpeed="max" departPos="base" departLane="best" />
+
+    <flow id="12" type="car" from="16to0" to="12to24" begin="0" end="10" period="1" departSpeed="max" departPos="base" departLane="best" />
+    <flow id="13" type="bike" from="23to12" to="15to31" begin="0" end="20" period="1" departSpeed="max" departPos="base" departLane="best" />
+    <flow id="14" type="car" from="17to1" to="13to25" begin="0" end="20" period="1" departSpeed="max" departPos="base" departLane="best" />
+    <flow id="15" type="bike" from="22to8" to="11to30" begin="0" end="20" period="1" departSpeed="max" departPos="base" departLane="best" />
+
+</routes>
